@@ -35,12 +35,11 @@ class Processor:
         :return: (list) of dictionary rows
         """
         list_of_rows.clear()  # clear current data
-        file = open(file_name, "r")
-        for line in file:
-            task, priority = line.split(",")
-            row = {"Task": task.strip(), "Priority": priority.strip()}
-            list_of_rows.append(row)
-        file.close()
+        with open(file_name, "r") as file:
+            for line in file:
+                task, priority = line.split(",")
+                row = {"Task": task.strip(), "Priority": priority.strip()}
+                list_of_rows.append(row)
         return list_of_rows, 'Success'
 
     @staticmethod
